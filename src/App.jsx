@@ -1,29 +1,36 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import AddTask from "./pages/AddTask";
-// import AddTask from "./components/AddTask";
+import AddTask from "./pages/AddTask"; 
 
 const API_URL = "http://localhost:5000/tasks"; // Update with your backend URL
 
 const App = () => {
   const [tasks, setTasks] = useState([]);
+  console.log("App Rendered", tasks);
 
   // Fetch tasks from MongoDB
   useEffect(() => {
+    console.log("Fetching tasks")
     axios.get(API_URL)
       .then((res) => setTasks(res.data))
       .catch((err) => console.error(err));
-  }, []);
+  },[]);
+
 
   // Add Task
-  const handleAddTask = (task) => {
-    axios.post(API_URL, task)
-      .then((res) => setTasks([...tasks, res.data]))
-      .catch((err) => console.error(err));
-  };
+ const handleAddTask = (task) => {
 
-  // Delete Task
+  console.log("Adding task:", task);
+  axios.post(API_URL, task)
+    .then(() => axios.get(API_URL))  // Fetch updated task list
+    .then((res) => setTasks(res.data))
+    .catch((err) => console.error("Error adding task:", err));
+};
+
+
+
+  // Delete Task (Fixed Template String)
   const handleDeleteTask = (id) => {
     axios.delete(`${API_URL}/${id}`)
       .then(() => setTasks(tasks.filter(task => task._id !== id)))
@@ -48,7 +55,7 @@ const App = () => {
     // Update UI instantly
     setTasks(updatedTasks);
 
-    // Update database
+    // Update database (Fixed Template String)
     axios.put(`${API_URL}/${draggedTask._id}`, { category: draggedTask.category })
       .catch((err) => console.error(err));
   };
@@ -58,7 +65,8 @@ const App = () => {
       <h1 className="text-3xl font-bold text-center mb-6">Task Management</h1>
 
       {/* Add Task Form */}
-      <AddTask onAddTask={handleAddTask} />
+      {/* <AddTask onAddTask={handleAddTask} /> */}
+      
 
       {/* Drag & Drop Context */}
       <DragDropContext onDragEnd={handleDragEnd}>

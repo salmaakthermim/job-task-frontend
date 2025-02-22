@@ -8,6 +8,7 @@ import {
 import Main from '../Layout/Main';
 import Login from '../login/Login';
 import AddTask from '../pages/AddTask';
+import App from '../App';
 
   const router = createBrowserRouter([
     {
@@ -19,9 +20,13 @@ import AddTask from '../pages/AddTask';
           element: <Login></Login>,
         },
         {
+          path: "/",
+          element: <App></App>
+        },
+        {
           path: "/tasks",
           element: <AddTask></AddTask>
-        }
+        },
       ]
     },
   ]);

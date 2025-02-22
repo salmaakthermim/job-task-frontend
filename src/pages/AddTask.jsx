@@ -1,6 +1,8 @@
+import axios from "axios";
 import { useState } from "react";
 
 const AddTask = ({ onAddTask }) => {
+  console.log("AddTask Rendered", onAddTask);
   const [task, setTask] = useState({
     title: "",
     description: "",
@@ -15,7 +17,13 @@ const AddTask = ({ onAddTask }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!task.title.trim()) return alert("Task title is required!");
-    onAddTask(task);
+    console.log("onAddTask before call:", onAddTask, typeof onAddTask);
+    // onAddTask(task);
+    axios.post('http://localhost:5000/tasks',task)
+    .then(() => axios.get('http://localhost:5000/tasks'))  // Fetch updated task list
+    .then((res) => setTasks(res.data))
+    .catch((err) => console.error("Error adding task:", err));
+
     setTask({ title: "", description: "", category: "To-Do" }); // Reset form
   };
 
