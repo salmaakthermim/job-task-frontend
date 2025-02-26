@@ -9,6 +9,8 @@ import Main from '../Layout/Main';
 import Login from '../login/Login';
 import AddTask from '../pages/AddTask';
 import App from '../App';
+import Register from '../login/Register';
+import PrivateRoute from './PrivateRoute';
 
   const router = createBrowserRouter([
     {
@@ -20,12 +22,16 @@ import App from '../App';
           element: <Login></Login>,
         },
         {
+          path: '/register',
+          element: <Register></Register>
+      },
+        {
           path: "/",
           element: <App></App>
         },
         {
           path: "/tasks",
-          element: <AddTask></AddTask>
+          element: <PrivateRoute><AddTask></AddTask></PrivateRoute>
         },
       ]
     },
