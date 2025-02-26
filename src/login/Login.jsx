@@ -85,7 +85,7 @@ const Login = () => {
                                 <button className="btn btn-primary">Login</button>
                             </div>
                         </form>
-                        <SocialLogin></SocialLogin>
+                        {/* <SocialLogin></SocialLogin> */}
 
                      
 

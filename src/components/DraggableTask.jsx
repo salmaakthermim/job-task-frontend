@@ -1,31 +1,3 @@
-// import { useRef } from "react";
-// import Draggable from "react-draggable";
-// import { MdDelete } from "react-icons/md";
-
-// const DraggableTask = ({ task, onStart, onDelete }) => {
-//   const nodeRef = useRef(null);
-//   return (
-//     <Draggable nodeRef={nodeRef} onStart={() => onStart(task)} bounds="parent">
-//       <div ref={nodeRef} className="border text-white p-3 mb-3 rounded-lg shadow-md flex justify-between items-center">
-//         <div>
-//           <h3 className="font-semibold">{task.title}</h3>
-//           <p className="text-sm text-white">{task.description}</p>
-//           <small>{new Date(task.timestamp).toLocaleString()}</small>
-//         </div>
-//         <button
-//           onClick={() => onDelete(task._id)}
-//           className="text-red-500 hover:text-red-700"
-//         >
-//           <MdDelete />
-//         </button>
-//       </div>
-//     </Draggable>
-//   );
-// };
-
-// export default DraggableTask;
-
-
 
 import { useState, useRef } from "react";
 import Draggable from "react-draggable";
@@ -79,21 +51,21 @@ const DraggableTask = ({ task, onStart, onDelete, onUpdate }) => {
           {isEditing ? (
             <button
               onClick={handleSave}
-              className="text-green-500 hover:text-green-700"
+              className= "text-green-500 btn hover:text-green-700"
             >
               Save
             </button>
           ) : (
             <button
               onClick={() => setIsEditing(true)}
-              className="text-blue-500 hover:text-blue-700"
+              className="text-blue-500 btn hover:text-blue-700"
             >
               <MdEdit />
             </button>
           )}
           <button
             onClick={() => onDelete(task._id)}
-            className="text-red-500 hover:text-red-700"
+            className="text-red-500  hover:text-red-700 btn"
           >
             <MdDelete />
           </button>

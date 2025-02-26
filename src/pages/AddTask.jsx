@@ -19,8 +19,8 @@ const AddTask = ({ onAddTask }) => {
     if (!task.title.trim()) return alert("Task title is required!");
     console.log("onAddTask before call:", onAddTask, typeof onAddTask);
     // onAddTask(task);
-    axios.post('http://localhost:5000/tasks',task)
-    .then(() => axios.get('http://localhost:5000/tasks'))  // Fetch updated task list
+    axios.post('https://job-task-server-seven-beta.vercel.app/tasks',task)
+    .then(() => axios.get('https://job-task-server-seven-beta.vercel.app/tasks'))  // Fetch updated task list
     .then((res) => setTasks(res.data))
     .catch((err) => console.error("Error adding task:", err));
 

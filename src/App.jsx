@@ -3,7 +3,7 @@
 // import DraggableTask from "./components/DraggableTask";
 // // import DraggableTask from "./DraggableTask";
 
-// const API_URL = "http://localhost:5000/tasks"; // Update with your backend URL
+// const API_URL = "https://job-task-server-seven-beta.vercel.app/tasks"; // Update with your backend URL
 
 // const App = () => {
 //   const [tasks, setTasks] = useState([]);
@@ -89,7 +89,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import DraggableTask from "./components/DraggableTask";
 
-const API_URL = "http://localhost:5000/tasks"; // Update with your backend URL
+const API_URL = "https://job-task-server-seven-beta.vercel.app/tasks"; // Update with your backend URL
 
 const App = () => {
   const [tasks, setTasks] = useState([]);
